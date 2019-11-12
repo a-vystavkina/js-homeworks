@@ -16,11 +16,11 @@ function getResult(a,b,c){
     let discriminant = b**2 - 4*a*c;
     let x = [];
     if (discriminant < 0) {
-      return x;
-    } else if(discriminant == 0) {
+      x = ['Корней нет'];
+    } else if(discriminant === 0) {
       x = [-b / 2*a];
     } else if(discriminant > 0) {
-      x = [(-b + discriminant)/ 2*a, (-b - discriminant)/ 2*a];
+      x = [(-b + Math.sqrt(discriminant))/ 2*a, (-b - Math.sqrt(discriminant))/ 2*a];
     }
     return x;
 }
@@ -32,18 +32,18 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
-    // код для задачи №2 писать здесь
+    // код для задачи №2 писать здесь;
     let sum = 0;
-    let averageMark = [];
-    for (i = 0; i <= averageMark.length; i++) {
-    	if(averageMark.length > 4) {
-           averageMark.splice(5);
-           console.log(averageMark);
-    	} 
-        sum += averageMark[i];
-        let arithmeticMean = sum / averageMark.length;
+    if(marks.length > 5) {
+          console.log('Количество оценок больше 5');
+          marks.splice(5);
+        }
+    for (let i = 0; i <= marks.length; i++) {
+        sum += marks[i];
+        let arithmeticMean = sum / marks.length;
+        console.log(arithmeticMean);
+        return arithmeticMean;
     }
-    return averageMark;
 }
 
 function calculateDrinkTask(){
@@ -55,9 +55,12 @@ function calculateDrinkTask(){
 
 function askDrink(name,dateOfBirthday){
     // код для задачи №3 писать здесь
-    let year = new Date().getFullYear();
-    let result = (year >= 2001) ? `Сожалею, ${name}, но я не могу вам продать алкоголь. 
+    let birthDate = new Date(dateOfBirthday),
+        today = new Date(),
+        age = today.getFullYear() - birthDate.getFullYear();
+
+    let result = (age <= 18) ? `Сожалею, ${name}, но я не могу вам продать алкоголь. 
     Зато могу предложить вам замечательный клюквенный компот!` : `Не желаете ли олд-фэшн, ${name}?`;
-    return result;
     console.log(result);
+    return result;
 }
