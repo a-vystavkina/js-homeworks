@@ -16,8 +16,7 @@ function getResult(a,b,c){
     let discriminant = b**2 - 4*a*c;
     let array = [];
     if (discriminant < 0) {
-      let x = 'Корней нет';
-      array.push(x);
+      array;
     } else if(discriminant === 0) {
         let x1 = -b / 2*a;
         array.push(x1);
