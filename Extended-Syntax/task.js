@@ -14,15 +14,19 @@ function calculateQuadraticEquation(){
 function getResult(a,b,c){
     // код для задачи №1 писать здесь
     let discriminant = b**2 - 4*a*c;
-    let x = [];
+    let array = [];
     if (discriminant < 0) {
-      x = ['Корней нет'];
+      let x = 'Корней нет';
+      array.push(x);
     } else if(discriminant === 0) {
-      x = [-b / 2*a];
+        let x1 = -b / 2*a;
+        array.push(x1);
     } else if(discriminant > 0) {
-      x = [(-b + Math.sqrt(discriminant))/ 2*a, (-b - Math.sqrt(discriminant))/ 2*a];
+        let x2 = -b + Math.sqrt(discriminant)/ 2*a,
+            x3 = -b - Math.sqrt(discriminant)/ 2*a;
+        array.push(x2, x3);
     }
-    return x;
+    return array;
 }
 
 function calculateAverageRating(){
@@ -32,18 +36,15 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
-    // код для задачи №2 писать здесь;
     let sum = 0;
-    if(marks.length > 5) {
-          console.log('Количество оценок больше 5');
-          marks.splice(5);
-        }
-    for (let i = 0; i <= marks.length; i++) {
-        sum += marks[i];
-        let arithmeticMean = sum / marks.length;
-        console.log(arithmeticMean);
-        return arithmeticMean;
+    if (marks.length > 5){
+        marks.splice(5);
+        console.log('Количество оценок больше 5');
     }
+    for (let i = 0; i < marks.length; i++) {
+        sum += marks[i];
+    }
+    return(sum / marks.length);
 }
 
 function calculateDrinkTask(){
